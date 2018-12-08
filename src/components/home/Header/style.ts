@@ -1,5 +1,5 @@
 import styled, { css } from '../../style/styled'
-import { mobile, desktop } from '../../style/media'
+import { mobile } from '../../style/media'
 
 // images
 import bgSvg from './bg.svg'

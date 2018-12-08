@@ -2,7 +2,10 @@ import * as React from 'react'
 
 // Local
 import { Container } from '../Container'
-import { Wrapper, LogoWrapper, LogoType, Items } from './style'
+import { Wrapper, LogoWrapper, NavItems, NavItem, NavText } from './style'
+import LogoSvg from './Logo'
+import { Space } from '../Space'
+import { Arrow } from '../../vectors/Arrow'
 
 type Props = {}
 type State = { hovered: string | null; clicked: string | null }
@@ -13,26 +16,27 @@ export class Nav extends React.Component<Props, State> {
   render() {
     return (
       <Container>
+        <Space height={40} heightOnMobile={32} />
         <Wrapper>
           <LogoWrapper to="/">
-            <LogoType>Prisma</LogoType>
+            <LogoSvg />
           </LogoWrapper>
 
-          <Items />
+          <NavItems>
+            <NavItem href="#">
+              <NavText>What is GraphQL?</NavText>
+              <Arrow />
+            </NavItem>
+            <NavItem href="#">
+              <NavText>What is GraphQL?</NavText>
+              <Arrow />
+            </NavItem>
+            <NavItem href="#">
+              <NavText>Submit a link</NavText>
+            </NavItem>
+          </NavItems>
         </Wrapper>
       </Container>
     )
-  }
-
-  handleHover = (key: string) => {
-    return {
-      // -- FOR MOBILE --
-      onClick: () =>
-        // toggle
-        this.setState(prev => ({
-          clicked: prev.clicked === key ? null : key,
-          hovered: null,
-        })),
-    }
   }
 }

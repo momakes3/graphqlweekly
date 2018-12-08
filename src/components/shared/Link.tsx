@@ -33,7 +33,7 @@ export const Link = ({
   onClick,
   onMouseOver,
   onMouseEnter,
-  onMouseOut
+  onMouseOut,
 }: Props) => {
   const rest = {
     target,
@@ -44,7 +44,7 @@ export const Link = ({
     onMouseOver,
     onMouseEnter,
     onMouseOut,
-    onMouseEnter
+    onMouseEnter,
   }
 
   let Wrapper = to ? GatsbyLink : href ? 'a' : UnstyledButton

@@ -21,7 +21,7 @@ const Global = createGlobalStyle`
     line-height: 1.15;
 	  -webkit-text-size-adjust: 100%;
 	  box-sizing: border-box;
-    background : #082333;
+    background : #E5E5E5;
 
     ${retina(css`
       * {
@@ -33,8 +33,7 @@ const Global = createGlobalStyle`
 
   body {
     font-family: 'Rubik', var(--system-font) !important;
-    background: white;
-    color: ${p => p.theme.primaryDark1};
+    background: #E5E5E5;
   }
 
   body {

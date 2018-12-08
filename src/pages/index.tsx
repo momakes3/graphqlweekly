@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 import { Layout } from '../components/shared/Layout'
 import { Header } from '../components/home/Header'
 import { MetaTags } from '../components/shared/MetaTags'
+import { Content } from '../components/home/Content'
 
 export default () => (
   <Layout>
@@ -12,5 +13,6 @@ export default () => (
     <Helmet />
 
     <Header />
+    <Content />
   </Layout>
 )

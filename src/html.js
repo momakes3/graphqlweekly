@@ -15,7 +15,7 @@ export default class HTML extends React.Component {
           />
 
           <link
-            href="https://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans:400,600,700|Roboto+Mono"
+            href="https://fonts.googleapis.com/css?family=Rubik:400,500"
             rel="stylesheet"
           />
 

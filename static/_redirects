@@ -1,0 +1,74 @@
+https://www.prismagraphql.com/* https://www.prisma.io/:splat 301!
+/ga.js  https://www.google-analytics.com/analytics.js 200!
+/forum/*  http://forum.graph.cool/forum/:splat 200!
+
+# homepage
+/enterprise/*  https://prisma-homepage.netlify.com/enterprise/:splat 200!
+/cloud/*  https://prisma-homepage.netlify.com/cloud/:splat 200!
+
+
+# docs
+
+/docs/old-static/*  https://prisma-docs.netlify.com/docs/old-static/:splat 200!
+
+/docs/1.1/*  https://prisma-docs.netlify.com/docs/1.1/:splat 200!
+/docs/1.2/*  https://prisma-docs.netlify.com/docs/1.2/:splat 200!
+/docs/1.3/*  https://prisma-docs.netlify.com/docs/1.3/:splat 200!
+/docs/1.4/*  https://prisma-docs.netlify.com/docs/1.4/:splat 200!
+/docs/1.5/*  https://prisma-docs.netlify.com/docs/1.5/:splat 200!
+/docs/1.6/*  https://prisma-docs.netlify.com/docs/1.6/:splat 200!
+/docs/1.7/*  https://prisma-docs.netlify.com/docs/1.7/:splat 200!
+/docs/1.8/*  https://prisma-docs.netlify.com/docs/1.8/:splat 200!
+/docs/1.9/*  https://prisma-docs.netlify.com/docs/1.9/:splat 200!
+/docs/1.10/*  https://prisma-docs.netlify.com/docs/1.10/:splat 200!
+/docs/1.11/*  https://prisma-docs.netlify.com/docs/1.11/:splat 200!
+/docs/1.12/*  https://prisma-docs.netlify.com/docs/1.12/:splat 200!
+/docs/1.13/*  https://prisma-docs.netlify.com/docs/1.13/:splat 200!
+/docs/1.14/*  https://prisma-docs.netlify.com/docs/1.14/:splat 200!
+
+/docs/quickstart/*  https://prisma-docs.netlify.com/docs/quickstart/:splat 200!
+/docs/tutorials/*  https://prisma-docs.netlify.com/docs/tutorials/:splat 200!
+/docs/reference/*  https://prisma-docs.netlify.com/docs/reference/:splat 200!
+/docs/faq/*  https://prisma-docs.netlify.com/docs/faq/:splat 200!
+
+
+# new docs
+/docs/*  https://prisma-docs-v2.netlify.com/docs/:splat 200
+
+# docs fallback
+/docs/* /docs/ 301!
+
+# tutorials
+/tutorials/*  https://prisma-tutorials.netlify.com/tutorials/:splat 200
+
+# forum
+/forum  /forum/ 301!
+/docs/tutorials/relay-vs-apollo-overview-iu5niesain/ /docs/tutorials/relay-vs-apollo-iechu0shia/ 301!
+/docs/tutorials/relay-vs-apollo-requirements-iep9yi0ri6/ /docs/tutorials/relay-vs-apollo-iechu0shia/ 301!
+/docs/tutorials/relay-vs-apollo-mutations-koht6ethe3/ /docs/tutorials/relay-vs-apollo-iechu0shia/ 301!
+
+
+# temporary placeholder used in newsletter
+/blog/2018-01-09-graphcool-1-0-release-candidate-7bc575f60d0e/ https://blog.graph.cool/graphcool-1-0-release-candidate-7bc575f60d0e
+
+
+# tutorials that were moved from the docs to the blog 
+/blog/tutorial-building-a-graphql-server-with-graphql-yoga-6da86f346e68/ https://www.prisma.io/docs/tutorials/-nahgaghei6 301!
+/blog/tutorial-how-to-build-a-graphql-server-with-graphql-yoga-6da86f346e68/ https://www.prisma.io/docs/tutorials/-nahgaghei6 301!
+/blog/tutorial-building-a-realtime-graphql-server-with-subscriptions-2758cfc6d427/ https://www.prisma.io/docs/tutorials/-ien5es6ok3 301!
+/blog/deploying-graphql-servers-with-zeit-now-85f4757b79a7/ https://www.prisma.io/docs/tutorials/-ahs1jahkee 301!
+/blog/deploying-graphql-servers-with-apex-up-522f2b75a2ac/ https://www.prisma.io/docs/tutorials/-shieghae3d 301!
+/blog/how-to-deploy-a-prisma-cluster-to-aws-fargate-using-docker-cloudformation-293aa8727b89/ https://www.prisma.io/docs/tutorials/-joofei3ahd 301!
+
+# medium abbreviated links
+/blog/ac5e2950214e https://www.prisma.io/blog/graphql-server-basics-the-schema-ac5e2950214e/ 301!
+/blog/6da86f346e68 https://www.prisma.io/docs/tutorials/build-graphql-servers/development/build-a-graphql-server-from-scratch-nahgaghei6
+
+# renamed blog articles
+/blog/prisma-client-beta-ahph4o1umail /blog/prisma-client-preview-ahph4o1umail
+
+# general fallback
+# /*        /index.html   200
+
+
+/*  https://prisma-homepage.netlify.com/:splat 200

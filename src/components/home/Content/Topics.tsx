@@ -1,9 +1,11 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { TopicBox } from '../../shared/Topics/TopicBox'
-import { TopicArticle } from '../../shared/Topics/TopicArticle'
 
 // Local
+import { TopicBox } from '../../shared/Topics/TopicBox'
+import { TopicArticle } from '../../shared/Topics/TopicArticle'
+import nikolasBurk from '../../../../static/nikolasBurk.png'
+import { NavIssue } from './NavIssue'
 
 export const Topics = () => {
   return (
@@ -18,7 +20,7 @@ export const Topics = () => {
           />,
         ]}
         author={{
-          avatar: '',
+          avatar: nikolasBurk,
           name: 'Nikolas Burk',
           bio: 'Full-Stack Developer at Graphcool',
         }}
@@ -30,7 +32,18 @@ export const Topics = () => {
         articles={[
           <TopicArticle
             title="Introducing Prisma Cloud — A GraphQL Database Platform "
-            text="Are you looking for ways to put your Prisma services into production? Because Prisma is entirely open-source, you can always do so by using your favorite cloud provider. In case you don't want to fiddle around with Docker and would like a bit more convenience and tooling around deploying and hosting Prisma, you can now simply setup your own Prisma cluster with Prisma Cloud. Connect your database and you're ready to go!"
+            text={
+              <>
+                Are you looking for ways to put your <a href="#">Prisma</a>{' '}
+                services into production? Because Prisma is entirely
+                open-source, you can always do so by using your favorite cloud
+                provider. In case you don't want to fiddle around with Docker
+                and would like a bit more convenience and tooling around
+                deploying and hosting Prisma, you can now simply setup your own
+                Prisma cluster with Prisma Cloud. Connect your database and
+                you're ready to go!
+              </>
+            }
           />,
           <TopicArticle
             title="SDL First Products: Parallelizing Product Development with GraphQL"
@@ -65,14 +78,47 @@ export const Topics = () => {
           <TopicArticle
             title="“GraphQL Day” in Amsterdam on April 14"
             text="Need an excuse for a trip to Amsterdam? Here it comes! The GraphQL Europe team is bringing a mini-conference to the Dutch capital. Look forward to great talks by Ken Wheeler, Johannes Schickling, Martijn Walraven and a lot more. "
+            special="All GraphQL Day attendees get a free ticket to attend the after-party from the ReactAmsterdam conference the day before."
           />,
         ]}
       />
+
+      <TopicBox
+        topictitle="Videos"
+        topicColor="#27AE60"
+        articles={[
+          <TopicArticle
+            title="Intro to Urql (Youtube, 35 min)"
+            text="urql is a new GraphQL client for React. At the most recent NYC GraphQL Meetup, Kurt Kemple gave a presentation about it. 35 min well worth your time!"
+          />,
+        ]}
+      />
+
+      <TopicBox
+        topictitle="Tools & Open Source"
+        topicColor="#009BE3"
+        articles={[
+          <TopicArticle
+            title="maticzav/graphql-shield"
+            text={`Matic Zavadlal has created a nice little library to secure GraphQL servers: "GraphQL Shield helps you create permission layer for your application. The idea behind it is to separate the permission logic from your application logic. This way you can you can make sure no request will ever be resolved if it wasn't meant to be."`}
+          />,
+          <TopicArticle
+            title="LawJolla/prisma-auth0-example"
+            text="Another approach to implement permissions in your GraphQL server is by using custom directives right inside your GraphQL schema definition. Check out this example by Dennis Walsh to learn more."
+          />,
+        ]}
+      />
+
+      <NavIssue />
     </Wrapper>
   )
 }
 
 const Wrapper = styled.div`
   flex-grow: 1;
+  flex-shrink: 1;
+
   max-width: 800px;
+  margin-top: -60px;
+  width: 100%;
 `

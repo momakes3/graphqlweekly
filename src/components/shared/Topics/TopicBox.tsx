@@ -63,7 +63,6 @@ const Wrapper = styled.div<{
   topicColor?: InputColor
   issueTitle?: String
 }>`
-  width: 800px;
   min-height: 100px;
   margin-bottom: 16px;
 
@@ -72,17 +71,23 @@ const Wrapper = styled.div<{
   border-radius: 8px;
 
   padding: 64px;
-  ${p =>
-    p.topicColor &&
-    css`
-      padding-left: 56px;
-      border-left: 8px solid ${p.topicColor};
-    `};
 
   ${p =>
     p.issueTitle &&
     css`
       margin-top: -15px;
+    `};
+
+  ${p =>
+    p.topicColor &&
+    css`
+      padding-left: 56px;
+      border-left: 8px solid ${p.topicColor};
+
+      a {
+        color: ${p.topicColor};
+        text-decoration: underline;
+      }
     `};
 `
 
@@ -115,6 +120,7 @@ const IssueTitle = styled.div`
 
   color: #ffffff;
 `
+
 const IssueDate = styled.span`
   opacity: 0.66;
 
@@ -122,8 +128,43 @@ const IssueDate = styled.span`
     content: ' ';
   }
 `
-const AuthorWrapper = styled.div``
-const Avatar = styled.div``
-const AuthorDetails = styled.div``
-const AuthorName = styled.div``
-const AuthorBio = styled.div``
+
+const AuthorWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  margin-top: 32px;
+`
+
+const Avatar = styled.div<{ image: string }>`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: url(${p => p.image});
+  background-size: cover;
+`
+
+const AuthorDetails = styled.div`
+  flex-grow: 1;
+  margin-left: 16px;
+`
+
+const AuthorName = styled.h3`
+  margin: 0;
+  font-style: normal;
+
+  font-weight: 500;
+  line-height: 1;
+  font-size: 16px;
+
+  color: #081146;
+`
+
+const AuthorBio = styled.h2`
+  margin: 8px 0 0 0;
+
+  font-weight: 400;
+  line-height: 1;
+  font-size: 16px;
+
+  color: #4d5379;
+`

@@ -4,13 +4,14 @@ import * as React from 'react'
 import { Container } from '../../shared/Container'
 import styled from '../../style/styled'
 import { Topics } from './Topics'
+import { Sidebar } from './Sidebar'
 
 export const Content = () => {
   return (
     <Container>
       <LayoutWrapper>
         <Topics />
-        <div>SideBar</div>
+        <Sidebar />
       </LayoutWrapper>
     </Container>
   )
@@ -18,5 +19,4 @@ export const Content = () => {
 
 const LayoutWrapper = styled.div`
   display: flex;
-  margin-top: -60px;
 `

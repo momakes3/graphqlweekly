@@ -14,12 +14,14 @@ export const PrimaryButton = ({ text, icon }: Props) => (
 )
 
 const Wrapper = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   padding: 12px 17px;
   background: ${p => p.theme.purple};
   box-shadow: 0px 4px 10px rgba(23, 43, 58, 0.25);
   border-radius: 4px;
-  display: flex;
-  align-items: center;
 
   border: none;
   outline: none;

@@ -17,7 +17,11 @@ export const HeaderWrapper = styled.header`
   background-image: url(${bgSvg});
   background-size: cover;
   background-position: top center;
-  height: 595px;
+  min-height: 595px;
+
+  ${mobile(css`
+    padding-bottom: 100px;
+  `)};
 `
 
 export const PageTitle = styled.h1`
@@ -34,4 +38,10 @@ export const PageTitle = styled.h1`
   strong {
     font-weight: 500;
   }
+
+  ${mobile(css`
+    line-height: 1.33;
+    font-size: 24px;
+    padding: 0 25px;
+  `)};
 `

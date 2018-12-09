@@ -5,10 +5,9 @@ import { Arrow } from '../vectors/Arrow'
 interface props {
   text: string
   href: string
-  arrow: boolean
 }
 
-export const ArrowLink = ({ text, href, arrow = true }: props) => {
+export const ArrowLink = ({ text, href }: props) => {
   return (
     <LinkWrapper href={href}>
       <>

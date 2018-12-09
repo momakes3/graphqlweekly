@@ -7,9 +7,8 @@ export const Container = styled.div`
 
   ${mobile(css`
     max-width: 600px;
-    padding-left: 21px;
-    padding-right: 21px;
+    padding-left: 8px;
+    padding-right: 8px;
     box-sizing: content-box;
-    overflow: hidden;
   `)};
 `

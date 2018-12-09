@@ -14,8 +14,10 @@ export const Input = ({ label, placeholder }: Props) => (
 )
 
 const Wrapper = styled.div`
+  height: 16px;
   display: inline-flex;
-  padding: 10px 0;
+  align-items: center;
+
   flex-shrink: 1;
   width: auto;
 `

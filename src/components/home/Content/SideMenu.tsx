@@ -14,8 +14,8 @@ export const SideMenu = ({ title, items }: Props) => {
       <div>
         {items &&
           items.map((e: any) => (
-            <Item href={e.url} selected={e.selected}>
-              {e.selected && <Bullet />}
+            <Item href={e.url} selected={e.selected} title={title}>
+              {e.selected && <Bullet title={title} />}
               {e.icon && <IconWrapper>{e.icon}</IconWrapper>}
               {e.text}
             </Item>
@@ -41,7 +41,7 @@ const Title = styled.div`
   color: #9da0b5;
 `
 
-const Item = styled.a<{ selected?: any }>`
+const Item = styled.a<{ selected?: any; title: string }>`
   margin-top: 16px;
   display: flex;
   align-items: center;
@@ -52,13 +52,14 @@ const Item = styled.a<{ selected?: any }>`
   line-height: 18px;
   font-size: 18px;
 
-  color: ${p => (p.selected ? '#D60690' : '#081146')};
+  color: ${p =>
+    p.selected ? (p.title == 'topics' ? '#009BE3' : '#D60690') : '#081146'};
 `
 
-const Bullet = styled.div`
+const Bullet = styled.div<{ title: string }>`
   width: 8px;
   height: 8px;
-  background: #d60690;
+  background: ${p => (p.title == 'topics' ? '#009BE3' : '#d60690')};
   border-radius: 50%;
   margin-left: -23px;
   margin-right: 15px;

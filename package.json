@@ -51,7 +51,7 @@
   },
   "scripts": {
     "dev": "gatsby develop",
-    "dev-wan": "gatsby develop --host 0.0.0.0",
+    "dev-ip": "gatsby develop --host 192.168.1.100",
     "build": "gatsby build",
     "format": "prettier --write \"src/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",

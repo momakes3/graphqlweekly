@@ -1,5 +1,6 @@
 import * as React from 'react'
-import styled from '../../style/styled'
+import styled, { css } from '../../style/styled'
+import { mobile } from '../../style/media'
 
 interface Props {
   label: string
@@ -19,20 +20,25 @@ const Wrapper = styled.div`
   align-items: center;
 
   flex-shrink: 1;
+  flex-grow: 1;
   width: auto;
 `
 
 const Label = styled.label`
-  width: 62px;
+  width: 69px;
   height: 18px;
 
-  margin-right: 16px;
+  flex-shrink: 0;
   font-weight: 500;
   line-height: 1;
   font-size: 18px;
   text-transform: uppercase;
 
   color: ${p => p.theme.dark};
+
+  ${mobile(css`
+    font-size: 16px;
+  `)};
 `
 
 const InputTag = styled.input`
@@ -41,6 +47,7 @@ const InputTag = styled.input`
   flex-basis: auto;
   height: 18px;
   width: 100%;
+  padding: 0;
 
   font-family: 'Rubik';
   font-weight: 400;
@@ -50,4 +57,8 @@ const InputTag = styled.input`
   border: none;
   outline: none;
   color: ${p => p.theme.lightDark};
+
+  ${mobile(css`
+    font-size: 16px;
+  `)};
 `

@@ -3,7 +3,7 @@ import styled, { css } from '../../style/styled'
 
 // Local
 import { Link } from '../Link'
-import { mobile } from '../../style/media'
+import { mobile, desktop } from '../../style/media'
 
 export const Wrapper = styled.nav`
   display: flex;
@@ -22,6 +22,7 @@ export const LogoWrapper = styled(Link)`
   align-items: center;
   ${mobile(css`
     /* Hieght & shadow together */
+    margin-left: -5px;
     svg {
       width: auto;
       height: 56px;
@@ -47,10 +48,15 @@ export const NavItems = styled.div<{ isOpened: boolean }>`
   `)};
 
   ${p =>
-    p.isOpened &&
-    mobile(css`
-      height: 0;
-    `)};
+    p.isOpened
+      ? mobile(css`
+          padding-bottom: 20px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        `)
+      : mobile(css`
+          height: 0;
+          padding-top: 0;
+        `)};
 `
 
 export const NavItem = styled.a`
@@ -77,4 +83,9 @@ export const MenuButton = styled.span`
 
   margin-top: 11px;
   margin-right: 6px;
+  cursor: pointer;
+
+  ${desktop(css`
+    display: none;
+  `)};
 `

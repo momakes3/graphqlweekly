@@ -34,6 +34,7 @@ export type SpaceSizes =
   | 12
   | 16
   | 24
+  | 27
   | 32
   | 40
   | 48

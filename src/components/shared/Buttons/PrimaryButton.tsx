@@ -25,6 +25,13 @@ const Wrapper = styled.button`
 
   border: none;
   outline: none;
+
+  transition: transform 140ms ease-out, box-shadow 140ms ease-out;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0px 7px 16px rgba(23, 43, 58, 0.22);
+  }
 `
 
 const Text = styled.span`

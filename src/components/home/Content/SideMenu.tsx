@@ -4,7 +4,7 @@ import * as React from 'react'
 import styled from '../../style/styled'
 interface Props {
   title: string
-  items: React.ReactNodeArray
+  items: any
 }
 
 export const SideMenu = ({ title, items }: Props) => {

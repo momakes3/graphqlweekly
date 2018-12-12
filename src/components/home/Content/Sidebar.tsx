@@ -3,7 +3,7 @@ import styled, { css } from '../../style/styled'
 
 // Local
 import { Space } from '../../shared/Space'
-import { SideMenu } from './Sidemenu'
+import { SideMenu } from './SideMenu'
 import { SidebarLine } from './SidebarLine'
 import Twitter from '../../vectors/Twitter'
 import Slack from '../../vectors/Slack'
@@ -15,7 +15,7 @@ export const Sidebar = () => {
     <Wrapper>
       <Space height={64} />
       <SideMenu
-        title="Join the community"
+        heading="Join the community"
         items={[
           { text: 'Follow on Twitter', url: '#', icon: <Twitter /> },
           { text: 'Join us on Slack', url: '#', icon: <Slack /> },
@@ -25,7 +25,8 @@ export const Sidebar = () => {
       <SidebarLine />
 
       <SideMenu
-        title="topics"
+        heading="topics"
+        primaryColor="#009BE3"
         items={[
           { text: 'Articles', url: '#', selected: true },
           { text: 'Tutorials', url: '#' },
@@ -37,13 +38,19 @@ export const Sidebar = () => {
 
       <Space height={64} />
       <SideMenu
-        title="Recent issues"
+        heading="Recent issues"
+        primaryColor="#D60690"
         items={[
           { text: 'Issue 88', url: '#', selected: true },
           { text: 'Issue 87', url: '#' },
           { text: 'Issue 86', url: '#' },
           { text: 'Issue 85', url: '#' },
-          { text: 'View all issues', url: '#', icon: <Archive /> },
+          {
+            text: 'View all issues',
+            url: '#',
+            icon: <Archive />,
+            extraTop: true,
+          },
         ]}
       />
     </Wrapper>

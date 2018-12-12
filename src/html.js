@@ -6,7 +6,7 @@ export default class HTML extends React.Component {
     return (
       <html {...this.props.htmlAttributes}>
         <head>
-          <title>Prisma</title>
+          <title>GraphQL Weekly</title>
           <meta charSet="utf-8" />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta
@@ -15,7 +15,7 @@ export default class HTML extends React.Component {
           />
 
           <link
-            href="https://fonts.googleapis.com/css?family=Rubik:400,500"
+            href="https://fonts.googleapis.com/css?family=Rubik:400,500,700"
             rel="stylesheet"
           />
 

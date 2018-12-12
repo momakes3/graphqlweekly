@@ -8,13 +8,15 @@ import { MetaTags } from '../components/shared/MetaTags'
 import { Content } from '../components/home/Content'
 import { Footer } from '../components/home/Footer'
 
-export default () => (
-  <Layout>
-    <MetaTags />
-    <Helmet />
+export default () => {
+  return (
+    <Layout>
+      <MetaTags />
+      <Helmet />
 
-    <Header />
-    <Content />
-    <Footer />
-  </Layout>
-)
+      <Header />
+      <Content />
+      <Footer />
+    </Layout>
+  )
+}

@@ -4,8 +4,8 @@ import styled from 'styled-components'
 // Local
 import { TopicBox } from '../../shared/Topics/TopicBox'
 import { TopicArticle } from '../../shared/Topics/TopicArticle'
-import nikolasBurk from '../../../../static/nikolasBurk.png'
 import { NavIssue } from './NavIssue'
+import nikolasBurk from '../../../../static/nikolasBurk.png'
 
 export const Topics = () => {
   return (
@@ -13,6 +13,7 @@ export const Topics = () => {
       <TopicBox
         issueTitle="Issue 88"
         issueDate="• 25. Mar 2018"
+        isIssueCard={true}
         articles={[
           <TopicArticle
             title="New GraphCMS, GraphQL Day and more background on Prisma this week in GraphQL Weekly!"
@@ -27,7 +28,7 @@ export const Topics = () => {
       />
 
       <TopicBox
-        topictitle="Articles"
+        topicTitle="Articles"
         topicColor="#F531B1"
         articles={[
           <TopicArticle
@@ -57,7 +58,7 @@ export const Topics = () => {
       />
 
       <TopicBox
-        topictitle="Tutorials"
+        topicTitle="Tutorials"
         topicColor="#6560E2"
         articles={[
           <TopicArticle
@@ -72,7 +73,7 @@ export const Topics = () => {
       />
 
       <TopicBox
-        topictitle="Community & Events"
+        topicTitle="Community & Events"
         topicColor="#009BE3"
         articles={[
           <TopicArticle
@@ -84,7 +85,7 @@ export const Topics = () => {
       />
 
       <TopicBox
-        topictitle="Videos"
+        topicTitle="Videos"
         topicColor="#27AE60"
         articles={[
           <TopicArticle
@@ -95,7 +96,7 @@ export const Topics = () => {
       />
 
       <TopicBox
-        topictitle="Tools & Open Source"
+        topicTitle="Tools & Open Source"
         topicColor="#009BE3"
         articles={[
           <TopicArticle

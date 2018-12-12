@@ -7,18 +7,20 @@ import { HLine } from '../Input/HLine'
 import { InputColor } from '../../style/theme'
 
 interface Props {
-  topictitle?: String
+  topicTitle?: String
   topicColor?: InputColor
   issueTitle?: String
+  isIssueCard?: boolean
   issueDate?: String
   articles: React.ReactNodeArray
   author?: any //TODO
 }
 
 export const TopicBox = ({
-  topictitle,
+  topicTitle,
   topicColor,
   articles,
+  isIssueCard,
   issueTitle,
   issueDate,
   author,
@@ -26,22 +28,28 @@ export const TopicBox = ({
   return (
     <>
       {issueTitle && (
-        <IssueTitle>
-          {issueTitle}
-          <IssueDate>{issueDate}</IssueDate>
-        </IssueTitle>
+        <IssueTagAligner>
+          <IssueTitle>
+            {issueTitle}
+            <IssueDate>{issueDate}</IssueDate>
+          </IssueTitle>
+        </IssueTagAligner>
       )}
-      <Wrapper topicColor={topicColor} issueTitle={issueTitle}>
-        {topictitle && (
-          <TopicsTitle textColor={topicColor}>{topictitle}</TopicsTitle>
+      <Wrapper
+        topicColor={topicColor}
+        issueTitle={issueTitle}
+        isIssueCard={isIssueCard}
+      >
+        {topicTitle && (
+          <TopicsTitle textColor={topicColor}>{topicTitle}</TopicsTitle>
         )}
         <div>
           {articles.map((e, i) => {
             return (
-              <>
+              <div key={i}>
                 {e}
                 {articles.length === i + 1 || <HLine />}
-              </>
+              </div>
             )
           })}
         </div>
@@ -62,11 +70,12 @@ export const TopicBox = ({
 const Wrapper = styled.div<{
   topicColor?: InputColor
   issueTitle?: String
+  isIssueCard?: boolean
 }>`
   min-height: 100px;
   margin-bottom: 16px;
 
-  background: #f6f6f7;
+  background: ${p => (p.isIssueCard ? '#f6f6f7' : 'white')};
   box-shadow: 0px 4px 16px rgba(8, 17, 70, 0.05);
   border-radius: 8px;
 
@@ -102,11 +111,17 @@ const TopicsTitle = styled.h2<{ textColor?: InputColor }>`
   color: ${p => p.textColor};
 `
 
+const IssueTagAligner = styled.div`
+  text-align: center;
+`
+
 const IssueTitle = styled.div`
+  display: inline-flex;
   position: relative;
-  width: 217px;
   height: 32px;
   margin: 0 auto;
+  padding-left: 17px;
+  padding-right: 17px;
 
   background: #6560e2;
   box-shadow: 0px 4px 10px rgba(23, 43, 58, 0.25);
@@ -118,7 +133,7 @@ const IssueTitle = styled.div`
   text-align: center;
   text-transform: uppercase;
 
-  color: #ffffff;
+  color: white;
 `
 
 const IssueDate = styled.span`

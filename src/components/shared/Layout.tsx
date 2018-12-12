@@ -21,7 +21,7 @@ const Global = createGlobalStyle`
     line-height: 1.15;
 	  -webkit-text-size-adjust: 100%;
 	  box-sizing: border-box;
-    background : #E5E5E5;
+    background : #F1F1F4;
 
     ${retina(css`
       * {

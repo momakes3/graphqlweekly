@@ -2,9 +2,9 @@ import * as React from 'react'
 import Helmet from 'react-helmet'
 
 const defaults = {
-  title: 'Prisma - Database tools for modern developers',
+  title: 'GraphQL Weekly - Newsletter about GraphQL, Apollo and more',
   description:
-    'Open-source database tools for modern developers. Prisma replaces traditional ORMs and can be used to build GraphQL servers, REST APIs, microservices & more.',
+    'A weekly newsletter of the best news, articles and projects about GraphQL, Apollo and more.',
   image: 'https://www.prisma.io/og-image.png',
   video: 'https://www.youtube.com/watch?v=jF9VULLzwVk',
   url: 'https://www.prisma.io',

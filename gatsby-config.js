@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    siteName: `Prisma`,
-    siteUrl: 'https://www.prisma.io',
+    siteName: `GraphQL Weekly`,
+    siteUrl: 'https://graphqlweekly.com',
   },
 
   plugins: [

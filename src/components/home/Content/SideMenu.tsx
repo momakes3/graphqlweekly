@@ -3,19 +3,32 @@ import * as React from 'react'
 // Local
 import styled from '../../style/styled'
 interface Props {
-  title: string
-  items: any
+  heading: string
+  primaryColor?: string
+  items: Array<{
+    url: string
+    selected?: boolean
+    icon?: React.ReactNode
+    text: string
+    extraTop?: boolean
+  }>
 }
 
-export const SideMenu = ({ title, items }: Props) => {
+export const SideMenu = ({ heading, primaryColor, items }: Props) => {
   return (
     <Wrapper>
-      <Title>{title}</Title>
+      <Title>{heading}</Title>
       <div>
         {items &&
-          items.map((e: any) => (
-            <Item href={e.url} selected={e.selected} title={title}>
-              {e.selected && <Bullet title={title} />}
+          items.map((e, i) => (
+            <Item
+              href={e.url}
+              selected={e.selected}
+              primaryColor={primaryColor}
+              extraTop={e.extraTop}
+              key={e.text + i}
+            >
+              {e.selected && <Bullet primaryColor={primaryColor} />}
               {e.icon && <IconWrapper>{e.icon}</IconWrapper>}
               {e.text}
             </Item>
@@ -41,8 +54,12 @@ const Title = styled.div`
   color: #9da0b5;
 `
 
-const Item = styled.a<{ selected?: any; title: string }>`
-  margin-top: 16px;
+const Item = styled.a<{
+  selected?: any
+  primaryColor?: string
+  extraTop?: boolean
+}>`
+  margin-top: ${p => (p.extraTop ? 24 : 16)}px;
   display: flex;
   align-items: center;
   width: 100%;
@@ -51,20 +68,22 @@ const Item = styled.a<{ selected?: any; title: string }>`
   font-weight: 500;
   line-height: 18px;
   font-size: 18px;
+  vertical-align: middle;
 
-  color: ${p =>
-    p.selected ? (p.title == 'topics' ? '#009BE3' : '#D60690') : '#081146'};
+  color: ${p => (p.selected ? p.primaryColor || '#081146' : '#081146')};
 `
 
-const Bullet = styled.div<{ title: string }>`
+const Bullet = styled.div<{ primaryColor?: string }>`
   width: 8px;
   height: 8px;
-  background: ${p => (p.title == 'topics' ? '#009BE3' : '#d60690')};
+  background: ${p => p.primaryColor || '#081146'};
   border-radius: 50%;
   margin-left: -23px;
   margin-right: 15px;
 `
 
 const IconWrapper = styled.div`
-  margin-right: 15.5px;
+  margin-right: 15px;
+  margin-top: 1px;
+  margin-bottom: -1px;
 `

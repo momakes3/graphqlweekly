@@ -5,12 +5,26 @@ import { mobile } from '../style/media'
 interface Props {
   label: string
   placeholder: string
+  name?: string
+  value?: string
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
 }
 
-export const Textarea = ({ label, placeholder }: Props) => (
+export const Textarea = ({
+  label,
+  placeholder,
+  name,
+  value,
+  onChange,
+}: Props) => (
   <Wrapper>
     <Label>{label}</Label>
-    <TextareaTag placeholder={placeholder} />
+    <TextareaTag
+      placeholder={placeholder}
+      name={name}
+      onChange={onChange}
+      defaultValue={value}
+    />
   </Wrapper>
 )
 

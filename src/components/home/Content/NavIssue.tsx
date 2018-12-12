@@ -21,7 +21,7 @@ export const NavIssue = ({
   <Wrapper>
     {prevNumber &&
       firstIssueNumber !== prevNumber && (
-        <ViewLink to={`/issue/${prevNumber}`}>
+        <ViewLink to={`/issue/${prevNumber}/#content`}>
           <ArrowLeft />
           <span>View issue {prevNumber}</span>
         </ViewLink>
@@ -31,7 +31,7 @@ export const NavIssue = ({
 
     {nextNumber &&
       lastIssueNumber !== nextNumber && (
-        <ViewLink to={`/issue/${nextNumber}`}>
+        <ViewLink to={`/issue/${nextNumber}/#content`}>
           <span>View issue {nextNumber}</span>
           <ArrowRight />
         </ViewLink>

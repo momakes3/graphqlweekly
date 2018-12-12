@@ -9,51 +9,101 @@ import Twitter from '../../vectors/Twitter'
 import Slack from '../../vectors/Slack'
 import Archive from '../../vectors/Archive'
 import { mobile } from '../../style/media'
+import { IssueType } from '../../../types'
+import { getTopicUrlFriendly } from '../../../api'
 
-export const Sidebar = () => {
+type Props = {
+  topicsTitles: string[]
+  allIssues: IssueType[]
+}
+
+type State = {
+  showAllIssues: boolean
+}
+
+export class Sidebar extends React.Component<Props, State> {
+  state = {
+    showAllIssues: false,
+  }
+
+  render() {
+    const props = this.props
+
+    return (
+      <Wrapper>
+        <Space height={64} />
+        <SideMenu
+          heading="Join the community"
+          items={[
+            {
+              text: 'Follow on Twitter',
+              href: 'https://twitter.com/graphqlweekly',
+              icon: <Twitter />,
+            },
+            {
+              text: 'Join us on Slack',
+              href: 'https://slack.prisma.io/',
+              icon: <Slack />,
+            },
+          ]}
+        />
+
+        <SidebarLine />
+
+        <SideMenu
+          heading="topics"
+          primaryColor="#009BE3"
+          items={props.topicsTitles.map(title => {
+            const url = `/topic/${getTopicUrlFriendly(title)}`
+
+            return {
+              to: `${url}#content`,
+              text: title,
+              selected: isCurrentUrl(url),
+            }
+          })}
+        />
+
+        <Space height={64} />
+        <SideMenu
+          heading="Recent issues"
+          primaryColor="#D60690"
+          items={[
+            ...props.allIssues
+              .slice(0, this.state.showAllIssues ? undefined : 11)
+              .map(issue => {
+                const url = `/issue/${issue.number}`
+                return {
+                  to: `${url}#content`,
+                  text: `Issue ${issue.number}`,
+                  selected: isCurrentUrl(url),
+                }
+              }),
+
+            {
+              text: this.state.showAllIssues
+                ? 'Hide old issues'
+                : 'View all issues',
+              icon: <Archive />,
+              extraTop: true,
+              onClick: this.toggledShowAll,
+            },
+          ]}
+        />
+      </Wrapper>
+    )
+  }
+
+  toggledShowAll = () => {
+    this.setState(prev => ({ showAllIssues: !prev.showAllIssues }))
+  }
+}
+
+function isCurrentUrl(urlWithoutTrailingSlash: string) {
+  const pathname = window.location.pathname || ''
   return (
-    <Wrapper>
-      <Space height={64} />
-      <SideMenu
-        heading="Join the community"
-        items={[
-          { text: 'Follow on Twitter', url: '#', icon: <Twitter /> },
-          { text: 'Join us on Slack', url: '#', icon: <Slack /> },
-        ]}
-      />
-
-      <SidebarLine />
-
-      <SideMenu
-        heading="topics"
-        primaryColor="#009BE3"
-        items={[
-          { text: 'Articles', url: '#', selected: true },
-          { text: 'Tutorials', url: '#' },
-          { text: 'Videos', url: '#' },
-          { text: 'Community & Events', url: '#' },
-          { text: 'Tools & Open Source', url: '#' },
-        ]}
-      />
-
-      <Space height={64} />
-      <SideMenu
-        heading="Recent issues"
-        primaryColor="#D60690"
-        items={[
-          { text: 'Issue 88', url: '#', selected: true },
-          { text: 'Issue 87', url: '#' },
-          { text: 'Issue 86', url: '#' },
-          { text: 'Issue 85', url: '#' },
-          {
-            text: 'View all issues',
-            url: '#',
-            icon: <Archive />,
-            extraTop: true,
-          },
-        ]}
-      />
-    </Wrapper>
+    pathname.endsWith(urlWithoutTrailingSlash) ||
+    pathname.includes(urlWithoutTrailingSlash + '/')
   )
 }
 

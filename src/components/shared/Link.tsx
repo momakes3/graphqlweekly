@@ -44,11 +44,11 @@ export const Link = ({
     onMouseOver,
     onMouseEnter,
     onMouseOut,
-    onMouseEnter,
   }
 
   let Wrapper = to ? GatsbyLink : href ? 'a' : UnstyledButton
   let props = to ? { to, ...rest } : href ? { href, ...rest } : { ...rest }
 
+  // @ts-ignore
   return <Wrapper {...props}>{children}</Wrapper>
 }

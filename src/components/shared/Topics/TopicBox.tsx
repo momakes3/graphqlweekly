@@ -5,13 +5,14 @@ import styled from 'styled-components'
 import { css } from '../../style/styled'
 import { HLine } from '../Input/HLine'
 import { InputColor } from '../../style/theme'
+import { Link } from '../Link'
 
-interface Props {
-  topicTitle?: String
+type Props = {
+  topicTitle?: string
   topicColor?: InputColor
-  issueTitle?: String
+  issueNumber?: number
   isIssueCard?: boolean
-  issueDate?: String
+  issueDate?: string
   articles: React.ReactNodeArray
   author?: any //TODO
 }
@@ -21,23 +22,25 @@ export const TopicBox = ({
   topicColor,
   articles,
   isIssueCard,
-  issueTitle,
+  issueNumber,
   issueDate,
   author,
 }: Props) => {
   return (
     <>
-      {issueTitle && (
+      {/* Blue Issue Tag */}
+      {issueNumber && (
         <IssueTagAligner>
-          <IssueTitle>
-            {issueTitle}
-            <IssueDate>{issueDate}</IssueDate>
+          <IssueTitle to={`/issue/${issueNumber}/#content`}>
+            Issue {issueNumber}
+            {issueDate && <IssueDate>{issueDate}</IssueDate>}
           </IssueTitle>
         </IssueTagAligner>
       )}
+
       <Wrapper
         topicColor={topicColor}
-        issueTitle={issueTitle}
+        hasIssueTitle={Boolean(issueNumber)}
         isIssueCard={isIssueCard}
       >
         {topicTitle && (
@@ -69,7 +72,7 @@ export const TopicBox = ({
 
 const Wrapper = styled.div<{
   topicColor?: InputColor
-  issueTitle?: String
+  hasIssueTitle?: boolean
   isIssueCard?: boolean
 }>`
   min-height: 100px;
@@ -82,7 +85,7 @@ const Wrapper = styled.div<{
   padding: 64px;
 
   ${p =>
-    p.issueTitle &&
+    p.hasIssueTitle &&
     css`
       margin-top: -15px;
     `};
@@ -115,7 +118,7 @@ const IssueTagAligner = styled.div`
   text-align: center;
 `
 
-const IssueTitle = styled.div`
+const IssueTitle = styled(Link)`
   display: inline-flex;
   position: relative;
   height: 32px;
@@ -138,7 +141,7 @@ const IssueTitle = styled.div`
 
 const IssueDate = styled.span`
   opacity: 0.66;
-
+  margin-left: 4px;
   ::before {
     content: ' ';
   }

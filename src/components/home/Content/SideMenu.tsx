@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from '../../shared/Link'
 
 // Local
 import styled from '../../style/styled'
@@ -6,11 +7,13 @@ interface Props {
   heading: string
   primaryColor?: string
   items: Array<{
-    url: string
+    to?: string
+    href?: string
     selected?: boolean
     icon?: React.ReactNode
     text: string
     extraTop?: boolean
+    onClick?: (e?: any) => void
   }>
 }
 
@@ -22,11 +25,13 @@ export const SideMenu = ({ heading, primaryColor, items }: Props) => {
         {items &&
           items.map((e, i) => (
             <Item
-              href={e.url}
+              to={e.to}
+              href={e.href}
               selected={e.selected}
               primaryColor={primaryColor}
               extraTop={e.extraTop}
-              key={e.text + i}
+              key={e.text + e.to}
+              onClick={e.onClick}
             >
               {e.selected && <Bullet primaryColor={primaryColor} />}
               {e.icon && <IconWrapper>{e.icon}</IconWrapper>}
@@ -54,7 +59,7 @@ const Title = styled.div`
   color: #9da0b5;
 `
 
-const Item = styled.a<{
+const Item = styled(Link)<{
   selected?: any
   primaryColor?: string
   extraTop?: boolean

@@ -1,36 +1,56 @@
-const fetch = require('node-fetch')
-const { fetchGraphQL } = require('./src/request')
-
-const getIssuesData = async () => {
-  const query = `
-    {
-      allIssues {
-        id
-        title
-      }
-    }
-  `
-
-  return fetchGraphQL({ query })
-}
+global.fetch = require('node-fetch')
+const { getAllIssues, getTopicUrlFriendly } = require('./src/api')
 
 exports.createPages = async ({ actions: { createPage } }) => {
   // a function that fetches our data
-  const data = await getIssuesData()
+  const {
+    lastIssue,
+    firstIssueNumber,
+    allIssues,
+    topicsList,
+  } = await getAllIssues()
 
-  // Create a page that lists all Pokémon.
-  // createPage({
-  //   path: `/`,
-  //   component: require.resolve('./src/templates/all-pokemon.js'),
-  //   context: { allPokemon },
-  // })
+  const topicsTitles = Object.keys(topicsList)
+  const commonHomeContext = {
+    lastIssue,
+    firstIssueNumber,
+    allIssues,
+    topicsTitles,
+  }
 
-  // // Create a page for each issue.
-  // allPokemon.forEach(pokemon => {
-  //   createPage({
-  //     path: `/issue/${pokemon.name}/`,
-  //     component: require.resolve('./src/templates/pokemon.js'),
-  //     context: { pokemon },
-  //   })
-  // })
+  // Create home page that shows latest issue and list of issues on the sidebar.
+  createPage({
+    path: `/`,
+    component: require.resolve('./src/templates/index.tsx'),
+    context: {
+      issue: lastIssue,
+      ...commonHomeContext,
+    },
+  })
+
+  // Create a page for each issue.
+  allIssues.forEach(issue => {
+    createPage({
+      path: `/issue/${issue.number}/`,
+      component: require.resolve('./src/templates/index.tsx'),
+      context: {
+        issue,
+        ...commonHomeContext,
+      },
+    })
+  })
+
+  // Create a page for each topic.
+  topicsTitles.forEach(topicTitle => {
+    const topicLinks = topicsList[topicTitle]
+    createPage({
+      path: `/topic/${getTopicUrlFriendly(topicTitle)}/`,
+      component: require.resolve('./src/templates/topic.tsx'),
+      context: {
+        topicTitle,
+        topicLinks,
+        ...commonHomeContext,
+      },
+    })
+  })
 }

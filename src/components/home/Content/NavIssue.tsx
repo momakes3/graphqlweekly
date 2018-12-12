@@ -1,20 +1,41 @@
 import * as React from 'react'
+import { Link } from 'gatsby'
 import styled from '../../style/styled'
 import ArrowLeft from '../../vectors/ArrowLeft'
 import ArrowRight from '../../vectors/ArrowRight'
+import { Space } from '../../shared/Space'
 
 // Local
 
-export const NavIssue = () => (
+export const NavIssue = ({
+  prevNumber,
+  nextNumber,
+  firstIssueNumber,
+  lastIssueNumber,
+}: {
+  prevNumber: number
+  nextNumber: number
+  firstIssueNumber?: number
+  lastIssueNumber?: number
+}) => (
   <Wrapper>
-    <ViewLink href="#">
-      <ArrowLeft />
-      <span>View issue 86</span>
-    </ViewLink>
-    <ViewLink href="#">
-      <span>View issue 86</span>
-      <ArrowRight />
-    </ViewLink>
+    {prevNumber &&
+      firstIssueNumber !== prevNumber && (
+        <ViewLink to={`/issue/${prevNumber}`}>
+          <ArrowLeft />
+          <span>View issue {prevNumber}</span>
+        </ViewLink>
+      )}
+
+    <Space fillRow />
+
+    {nextNumber &&
+      lastIssueNumber !== nextNumber && (
+        <ViewLink to={`/issue/${nextNumber}`}>
+          <span>View issue {nextNumber}</span>
+          <ArrowRight />
+        </ViewLink>
+      )}
   </Wrapper>
 )
 
@@ -26,7 +47,7 @@ const Wrapper = styled.div`
   padding: 32px 41px 62px 41px;
 `
 
-const ViewLink = styled.a`
+const ViewLink = styled(Link)`
   display: flex;
   align-items: center;
 

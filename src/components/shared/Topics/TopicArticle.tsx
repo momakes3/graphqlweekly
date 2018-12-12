@@ -3,32 +3,45 @@ import styled from 'styled-components'
 
 interface Props {
   title: string
-  text: React.ReactNode
-  special?: string
+  text: string
+  url: string
+  specialPerk?: string
 }
 
-export const TopicArticle = ({ title, text, special }: Props) => {
+export const TopicArticle = ({ title, text, url, specialPerk }: Props) => {
+  const isTextSafe = !text.includes('<') || /<(p|strong|i|a) ?.*>/.test(text)
   return (
     <>
-      <Title>{title}</Title>
-      <Text>{text}</Text>
-      {special && (
+      <Title href={url} target="_blank">
+        {title}
+      </Title>
+
+      {isTextSafe ? (
+        <Text dangerouslySetInnerHTML={{ __html: text }} />
+      ) : (
+        <Text children={text} />
+      )}
+
+      {specialPerk && (
         <Text>
           <strong>Special perk:</strong>
-          {special}
+          {specialPerk}
         </Text>
       )}
     </>
   )
 }
 
-const Title = styled.h2`
+const Title = styled.a`
   margin: 0;
   font-weight: 500;
   line-height: 1.33;
   font-size: 24px;
 
-  color: #081146;
+  &&&& {
+    text-decoration: none;
+    color: #081146;
+  }
 `
 
 const Text = styled.p`

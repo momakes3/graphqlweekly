@@ -2,7 +2,7 @@ import * as React from 'react'
 import styled from '../../style/styled'
 
 interface Props {
-  text: String
+  text: string
   icon?: any
 }
 

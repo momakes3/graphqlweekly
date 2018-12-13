@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styled from '../../style/styled'
 
-interface Props {
-  text: string
+type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  text: React.ReactNode
   icon?: React.ReactNode
   onClick?: (e: React.MouseEvent<HTMLElement>) => void
   disabled?: boolean

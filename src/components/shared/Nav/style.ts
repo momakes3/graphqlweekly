@@ -69,6 +69,12 @@ export const NavItem = styled.a`
   `)};
 `
 
+export const NavItemButton = styled(NavItem.withComponent('button'))`
+  border: none;
+  background: none;
+  outline: none;
+`
+
 export const NavText = styled.span`
   margin-right: 12px;
 

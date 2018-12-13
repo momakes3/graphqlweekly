@@ -7,6 +7,7 @@ import {
   LogoWrapper,
   NavItems,
   NavItem,
+  NavItemButton,
   NavText,
   MenuButton,
 } from './style'
@@ -28,6 +29,7 @@ export class Nav extends React.Component<Props, State> {
       isOpened: !this.state.isOpened,
     })
   }
+
   submitLinkClickHandler = () => {
     this.setState({
       SubmitForm: !this.state.SubmitForm,
@@ -48,17 +50,17 @@ export class Nav extends React.Component<Props, State> {
           </MenuButton>
 
           <NavItems isOpened={this.state.isOpened}>
-            <NavItem href="#">
+            <NavItem href="https://graphqlconf.org">
+              <NavText>GraphQL Conf 2019</NavText>
+              <Arrow />
+            </NavItem>
+            <NavItem href="https://graphql.org">
               <NavText>What is GraphQL?</NavText>
               <Arrow />
             </NavItem>
-            <NavItem href="#">
-              <NavText>What is GraphQL?</NavText>
-              <Arrow />
-            </NavItem>
-            <NavItem onClick={this.submitLinkClickHandler}>
+            <NavItemButton onClick={this.submitLinkClickHandler}>
               <NavText>Submit a link</NavText>
-            </NavItem>
+            </NavItemButton>
           </NavItems>
 
           {this.state.SubmitForm && (

@@ -18,7 +18,7 @@ type State = {
   description: string
   message: string
   loading: boolean
-  sentmessage: boolean
+  isDone: boolean
 }
 
 export class SubmitForm extends React.Component<Props, State> {
@@ -30,21 +30,11 @@ export class SubmitForm extends React.Component<Props, State> {
     description: '',
     message: '',
     loading: false,
-    sentmessage: false,
+    isDone: false,
   }
 
-  formSubmited = async e => {
+  formSubmitted = async (e: any) => {
     e.preventDefault()
-    // console.log(this.state)
-    // this.setState({ sentmessage: true })
-    // this.setState({
-    //   description: '',
-    //   name: '',
-    //   email: '',
-    //   title: '',
-    //   url: '',
-    //   loading: false,
-    // })
 
     if (
       this.state.description !== '' &&
@@ -65,7 +55,7 @@ export class SubmitForm extends React.Component<Props, State> {
       })
 
       if (res && res.data.createLinkSubmission.title === this.state.title) {
-        this.setState({ sentmessage: true })
+        this.setState({ isDone: true })
         this.setState({
           description: '',
           name: '',
@@ -90,18 +80,18 @@ export class SubmitForm extends React.Component<Props, State> {
 
     setTimeout(() => {
       this.setState({ message: '' })
-    }, 5000)
+    }, 5500)
   }
 
   render = () => {
-    const { onCancelClicked }: Props = this.props
+    const { onCancelClicked } = this.props
     return (
       <Wrapper onClick={onCancelClicked}>
         <BoxWrapper onClick={e => e.stopPropagation()}>
-          <FormWrapper onSubmit={this.formSubmited}>
-            {this.state.sentmessage ? (
+          <FormWrapper onSubmit={this.formSubmitted}>
+            {this.state.isDone ? (
               <Scrollable>
-                <Title>Submited for review 🎉</Title>
+                <Title>Submitted for review 🎉</Title>
               </Scrollable>
             ) : (
               <Scrollable>
@@ -154,20 +144,26 @@ export class SubmitForm extends React.Component<Props, State> {
             )}
 
             {this.state.message && <Message>{this.state.message}</Message>}
-
-            <BottomWrapper centerContent={this.state.sentmessage}>
-              {!this.state.sentmessage && (
+            {this.state.isDone ? (
+              <SingleButtonWrapper>
+                <SecondaryButton onClick={onCancelClicked}>
+                  Cancel
+                </SecondaryButton>
+              </SingleButtonWrapper>
+            ) : (
+              <BottomWrapper>
                 <PrimaryButton
                   text="Submit Link"
                   icon={<Check />}
                   type="submit"
                   disabled={this.state.loading}
                 />
-              )}
-              <SecondaryButton onClick={onCancelClicked}>
-                Cancel
-              </SecondaryButton>
-            </BottomWrapper>
+                )}
+                <SecondaryButton onClick={onCancelClicked}>
+                  Cancel
+                </SecondaryButton>
+              </BottomWrapper>
+            )}
           </FormWrapper>
         </BoxWrapper>
       </Wrapper>
@@ -253,8 +249,8 @@ const Wrapper = styled.div`
 
 const BoxWrapper = styled.div`
   min-height: 200px;
-  padding: 48px;
   box-sizing: border-box;
+  padding-bottom: 40px;
 
   background: #ffffff;
   border-left: 8px solid #dadbe3;
@@ -262,7 +258,8 @@ const BoxWrapper = styled.div`
   border-radius: 8px;
 
   ${desktop(css`
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
   `)};
 
   ${mobile(css`
@@ -314,13 +311,25 @@ const Scrollable = styled.div`
   overflow: auto;
   flex-basis: auto;
   flex-shrink: 1;
+
+  padding-top: 48px;
+  padding-left: 48px;
+  padding-right: 48px;
 `
 
-const BottomWrapper = styled.div<{ centerContent: boolean }>`
+const BottomWrapper = styled.div`
   display: flex;
-  justify-content: ${p => (p.centerContent ? 'center' : 'space-between')};
   flex-shrink: 0;
-  margin-top: ${p => (p.centerContent ? '40px' : '10px')};
+  padding-left: 48px;
+  padding-right: 48px;
+
+  justify-content: space-between;
+  margin-top: 10px;
+`
+
+const SingleButtonWrapper = styled(BottomWrapper)`
+  justify-content: center;
+  margin-top: 40px;
 `
 
 const Message = styled.div`

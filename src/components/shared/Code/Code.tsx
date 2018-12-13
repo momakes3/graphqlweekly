@@ -9,18 +9,20 @@ import { Pre } from './Pre'
 import SyntaxHighlighter, {
   registerLanguage,
 } from 'react-syntax-highlighter/prism-light'
-import js from 'react-syntax-highlighter/languages/prism/javascript'
+// import js from 'react-syntax-highlighter/languages/prism/javascript'
 import graphql from 'react-syntax-highlighter/languages/prism/graphql'
+import json from 'react-syntax-highlighter/languages/prism/json'
 import sql from 'react-syntax-highlighter/languages/prism/sql'
 import go from 'react-syntax-highlighter/languages/prism/go'
 import { dark } from './dark'
 import { light } from './light'
-import typescript from './typescript'
+// import typescript from './typescript'
 import { graphqlLight } from './graphqlLight'
 
-registerLanguage('javascript', js)
-registerLanguage('typescript', typescript)
+// registerLanguage('javascript', js)
+// registerLanguage('typescript', typescript)
 registerLanguage('graphql', graphql)
+registerLanguage('json', json)
 registerLanguage('sql', sql)
 registerLanguage('go', go)
 

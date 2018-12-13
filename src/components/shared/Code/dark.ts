@@ -33,6 +33,12 @@ export const dark = {
   punctuation: {
     color: 'rgba(255, 255, 255, 0.3)',
   },
+  tag: {
+    color: 'rgba(255, 255, 255, 0.3)',
+  },
+  operator: {
+    color: 'rgba(255, 255, 255, 0.3)',
+  },
   prolog: {
     color: '#fff',
   },

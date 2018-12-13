@@ -161,7 +161,7 @@ const QueryWrapper = styled.div`
 `
 
 const Title = styled.span`
-  margin-bottom: 48px;
+  margin-bottom: 44px;
   display: inline-block;
   font-weight: 500;
   line-height: 1;

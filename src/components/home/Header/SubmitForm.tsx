@@ -267,10 +267,13 @@ const BoxWrapper = styled.div`
 
   ${mobile(css`
     width: 100%;
-    height: 100%;
     max-width: 350px;
     padding: 40px 24px 24px;
   `)};
+
+  @media screen and (max-height: 700px) {
+    height: 100%;
+  }
 `
 
 const Title = styled.h2`

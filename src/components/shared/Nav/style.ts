@@ -61,6 +61,7 @@ export const NavItems = styled.div<{ isOpened: boolean }>`
 
 export const NavItem = styled.a`
   margin-left: 40px;
+  cursor: pointer;
 
   ${mobile(css`
     margin-left: 0;

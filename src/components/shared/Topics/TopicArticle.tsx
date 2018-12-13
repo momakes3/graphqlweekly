@@ -1,7 +1,9 @@
 import * as React from 'react'
 import styled from 'styled-components'
+import { mobile } from '../../style/media'
+import { css } from '../../style/styled'
 
-interface Props {
+type Props = {
   title: string
   text: string
   url: string
@@ -42,6 +44,11 @@ const Title = styled.a`
     text-decoration: none;
     color: #081146;
   }
+
+  ${mobile(css`
+    margin-top: 20px;
+    font-size: 18px;
+  `)};
 `
 
 const Text = styled.p`

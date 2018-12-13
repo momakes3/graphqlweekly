@@ -3,11 +3,19 @@ import styled from '../../style/styled'
 
 interface Props {
   text: string
-  icon?: any
+  icon?: React.ReactNode
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void
+  disabled?: boolean
 }
 
-export const PrimaryButton = ({ text, icon }: Props) => (
-  <Wrapper>
+export const PrimaryButton = ({
+  text,
+  icon,
+  onClick,
+  disabled,
+  ...props
+}: Props) => (
+  <Wrapper onClick={onClick} disabled={disabled} {...props}>
     {icon && <IconWrapper>{icon}</IconWrapper>}
     <Text>{text}</Text>
   </Wrapper>
@@ -23,15 +31,22 @@ const Wrapper = styled.button`
   background: ${p => p.theme.purple};
   box-shadow: 0px 4px 10px rgba(23, 43, 58, 0.25);
   border-radius: 4px;
+  cursor: pointer;
 
   border: none;
   outline: none;
 
-  transition: transform 140ms ease-out, box-shadow 140ms ease-out;
+  transition: transform 140ms ease-out, box-shadow 140ms ease-out,
+    background 140ms ease-out;
 
   &:hover {
     transform: translateY(-1px);
     box-shadow: 0px 7px 16px rgba(23, 43, 58, 0.22);
+  }
+
+  &[disabled] {
+    box-shadow: none;
+    background: #959595;
   }
 `
 

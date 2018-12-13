@@ -28,5 +28,4 @@ const LinkText = styled.span`
   line-height: 18px;
   font-size: 18px;
   text-align: right;
-  color: #ffffff;
 `

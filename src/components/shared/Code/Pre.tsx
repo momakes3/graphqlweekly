@@ -7,12 +7,6 @@ export const Pre = styled.pre<{
   compact?: boolean
 }>`
   &&&& {
-    background: ${p =>
-      p.background
-        ? p.theme.colorSchema === 'dark'
-          ? p.theme.primaryDark1
-          : p.theme.primaryLight3
-        : 'none'};
     padding: ${p => (!p.background ? '0 !important' : '1em !important')};
     border-radius: ${p => p.theme.radius}px;
     margin: 0 !important;
@@ -34,7 +28,7 @@ export const Pre = styled.pre<{
         'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter',
         'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono',
         'Nimbus Mono L', 'Courier New', Courier, monospace !important;
-      font-size: 14px !important;
+      font-size: 16px !important;
       line-height: ${p => (p.compact ? 1.429 : 1.574)} !important;
       direction: ltr !important;
       text-align: left;

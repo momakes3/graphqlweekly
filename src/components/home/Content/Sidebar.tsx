@@ -100,7 +100,7 @@ export class Sidebar extends React.Component<Props, State> {
 }
 
 function isCurrentUrl(urlWithoutTrailingSlash: string) {
-  const pathname = window.location.pathname || ''
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : ''
   return (
     pathname.endsWith(urlWithoutTrailingSlash) ||
     pathname.includes(urlWithoutTrailingSlash + '/')

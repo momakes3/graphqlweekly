@@ -40,20 +40,6 @@ const FooterWrapper = styled.footer`
       rgba(4, 11, 54, 0) 100%
     );
   }
-  ::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40px;
-    content: '';
-
-    background: linear-gradient(
-      180deg,
-      rgba(4, 11, 54, 0.33) 0%,
-      rgba(4, 11, 54, 0) 100%
-    );
-  }
   ::after {
     position: absolute;
     bottom: 0;

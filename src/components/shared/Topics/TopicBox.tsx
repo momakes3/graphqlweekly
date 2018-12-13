@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { css } from '../../style/styled'
 import { HLine } from '../Input/HLine'
 import { InputColor } from '../../style/theme'
+import { mobile } from '../../style/media'
 
 interface Props {
   topicTitle?: String
@@ -98,10 +99,21 @@ const Wrapper = styled.div<{
         text-decoration: underline;
       }
     `};
+
+  ${mobile(css`
+    padding: 24px;
+  `)};
+
+  ${p =>
+    p.topicColor &&
+    mobile(css`
+      padding-left: 16px;
+    `)};
 `
 
 const TopicsTitle = styled.h2<{ textColor?: InputColor }>`
-  margin: 0 0 32px 0;
+  margin-top: 0;
+  margin-bottom: 32px;
 
   font-weight: 500;
   line-height: 1;
@@ -109,6 +121,10 @@ const TopicsTitle = styled.h2<{ textColor?: InputColor }>`
   text-transform: uppercase;
 
   color: ${p => p.textColor};
+
+  ${mobile(css`
+    margin-bottom: 24px;
+  `)};
 `
 
 const IssueTagAligner = styled.div`
@@ -156,6 +172,7 @@ const Avatar = styled.div<{ image: string }>`
   border-radius: 50%;
   background: url(${p => p.image});
   background-size: cover;
+  flex-shrink: 0;
 `
 
 const AuthorDetails = styled.div`

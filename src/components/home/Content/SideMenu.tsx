@@ -3,6 +3,7 @@ import { Link } from '../../shared/Link'
 
 // Local
 import styled from '../../style/styled'
+import { getTopicColor } from '../topicColors'
 interface Props {
   heading: string
   primaryColor?: string
@@ -28,12 +29,12 @@ export const SideMenu = ({ heading, primaryColor, items }: Props) => {
               to={e.to}
               href={e.href}
               selected={e.selected}
-              primaryColor={primaryColor}
+              primaryColor={getTopicColor(e.text)}
               extraTop={e.extraTop}
               key={e.text + e.to}
               onClick={e.onClick}
             >
-              {e.selected && <Bullet primaryColor={primaryColor} />}
+              {e.selected && <Bullet primaryColor={getTopicColor(e.text)} />}
               {e.icon && <IconWrapper>{e.icon}</IconWrapper>}
               {e.text}
             </Item>

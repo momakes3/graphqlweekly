@@ -8,6 +8,6 @@ export const HLine = styled.div`
   background: #dadbe3;
 
   ${mobile(css`
-    margin: 12px 0;
+    margin: 24px 0;
   `)};
 `

@@ -20,7 +20,7 @@ export const NavIssue = ({
 }) => (
   <Wrapper>
     {prevNumber &&
-      firstIssueNumber !== prevNumber && (
+      firstIssueNumber !== prevNumber + 1 && (
         <ViewLink to={`/issue/${prevNumber}/#content`}>
           <ArrowLeft />
           <span>View issue {prevNumber}</span>
@@ -30,7 +30,7 @@ export const NavIssue = ({
     <Space fillRow />
 
     {nextNumber &&
-      lastIssueNumber !== nextNumber && (
+      lastIssueNumber !== nextNumber - 1 && (
         <ViewLink to={`/issue/${nextNumber}/#content`}>
           <span>View issue {nextNumber}</span>
           <ArrowRight />

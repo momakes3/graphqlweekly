@@ -53,6 +53,7 @@ const Label = styled.label`
 
   ${mobile(css`
     font-size: 16px;
+    margin-top: 10px;
   `)};
 `
 

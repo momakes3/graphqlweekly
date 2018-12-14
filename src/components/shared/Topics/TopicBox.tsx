@@ -45,7 +45,9 @@ export const TopicBox = ({
         isIssueCard={isIssueCard}
       >
         {topicTitle && (
-          <TopicsTitle textColor={topicColor}>{topicTitle}</TopicsTitle>
+          <TopicsTitle marginTop={issueNumber ? 16 : 0} textColor={topicColor}>
+            {topicTitle}
+          </TopicsTitle>
         )}
         <div>
           {articles.map((e, i) => {
@@ -110,12 +112,12 @@ const Wrapper = styled.div<{
   ${p =>
     p.topicColor &&
     mobile(css`
-      padding-left: 16px;
+      padding-left: 20px;
     `)};
 `
 
-const TopicsTitle = styled.h2<{ textColor?: InputColor }>`
-  margin-top: 0;
+const TopicsTitle = styled.h2<{ textColor?: InputColor; marginTop?: number }>`
+  margin-top: ${p => (p.marginTop ? p.marginTop : 0)}px;
   margin-bottom: 32px;
 
   font-weight: 500;

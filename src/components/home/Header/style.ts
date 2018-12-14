@@ -52,7 +52,7 @@ export const PageTitle = styled.h1`
 export const Socials = styled.div`
   width: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 
   margin-top: 40px;
   padding: 0 50px;
@@ -80,5 +80,9 @@ export const SocialItem = styled.a`
   }
   path {
     stroke: #fff;
+  }
+
+  &:nth-child(2n) {
+    margin-left: 40px;
   }
 `

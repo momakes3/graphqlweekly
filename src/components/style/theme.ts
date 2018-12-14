@@ -33,6 +33,7 @@ export type SpaceSizes =
   | 8
   | 12
   | 16
+  | 20
   | 24
   | 27
   | 32

@@ -1,13 +1,13 @@
 import { css } from './styled'
 
 export const mobile = (body: any) => css`
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1000px) {
     ${body};
   }
 `
 
 export const desktop = (body: any) => css`
-  @media screen and (min-width: 1201px) {
+  @media screen and (min-width: 1001px) {
     ${body};
   }
 `

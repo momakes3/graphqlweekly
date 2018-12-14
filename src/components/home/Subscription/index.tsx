@@ -69,7 +69,7 @@ export class Subscription extends React.Component<Props, State> {
           onChange={e => this.setState({ email: e.target.value })}
           value={this.state.email}
         />
-        <Space height={0} heightOnMobile={32} />
+        <Space height={0} heightOnMobile={20} />
         <PrimaryButton
           type="submit"
           text="Subscribe"
@@ -116,7 +116,7 @@ const BoxWrapper = styled.form`
   padding: 24px;
   padding-left: 32px;
   display: flex;
-  align-items: center;
+  align-items: stretch;
 
   background: #ffffff;
   box-shadow: 0px 4px 16px rgba(8, 17, 70, 0.1);
@@ -138,7 +138,7 @@ const Line = styled.div`
   ${mobile(css`
     width: auto;
     height: 1px;
-    margin: 16px 0;
+    margin: 4px 0;
   `)};
 `
 

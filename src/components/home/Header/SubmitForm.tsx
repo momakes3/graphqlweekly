@@ -158,7 +158,7 @@ export class SubmitForm extends React.Component<Props, State> {
                   type="submit"
                   disabled={this.state.loading}
                 />
-                )}
+
                 <SecondaryButton onClick={onCancelClicked}>
                   Cancel
                 </SecondaryButton>
@@ -265,7 +265,7 @@ const BoxWrapper = styled.div`
   ${mobile(css`
     width: 100%;
     max-width: 350px;
-    padding: 40px 24px 24px;
+    /* padding: 40px 24px 24px; */
   `)};
 
   @media screen and (max-height: 700px) {
@@ -290,12 +290,12 @@ const Title = styled.h2`
 const Line = styled.div`
   width: 100%;
   height: 1px;
-  margin: 24px 0;
+  margin: 13px 0;
 
   background: #dadbe3;
 
   ${mobile(css`
-    margin: 16px 0;
+    margin: 3px 0;
   `)};
 `
 
@@ -315,6 +315,10 @@ const Scrollable = styled.div`
   padding-top: 48px;
   padding-left: 48px;
   padding-right: 48px;
+
+  ${mobile(css`
+    padding: 40px 24px 24px;
+  `)};
 `
 
 const BottomWrapper = styled.div`

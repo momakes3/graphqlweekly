@@ -12,6 +12,7 @@ type State = {
   selectedQuery: { title: string; query: string }
   result?: string
   loading?: boolean
+  isResultStale: boolean
 }
 
 const queriesList: { title: string; query: string }[] = [
@@ -54,7 +55,12 @@ const queriesList: { title: string; query: string }[] = [
 ]
 
 export class Playground extends React.Component<Props, State> {
-  state = { selectedQuery: queriesList[0], result: '', loading: false }
+  state = {
+    selectedQuery: queriesList[0],
+    result: '',
+    loading: false,
+    isResultStale: false,
+  }
 
   exampleChanged = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const next = queriesList.find(q => q.title === e.target.value)

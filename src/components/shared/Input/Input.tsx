@@ -32,9 +32,9 @@ export const Input = ({
 )
 
 const Wrapper = styled.div`
-  height: 18px;
+  height: 40px;
   display: inline-flex;
-  align-items: center;
+  align-items: stretch;
 
   flex-shrink: 1;
   flex-grow: 1;
@@ -49,6 +49,7 @@ const Label = styled.label`
   line-height: 1;
   font-size: 18px;
   text-transform: uppercase;
+  align-self: center;
 
   color: ${p => p.theme.dark};
 
@@ -61,7 +62,7 @@ const InputTag = styled.input`
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: auto;
-  height: 18px;
+  height: 40px;
   width: 100%;
   padding: 0;
 
@@ -72,9 +73,13 @@ const InputTag = styled.input`
 
   border: none;
   outline: none;
-  color: ${p => p.theme.lightDark};
+  color: #081146;
 
   ${mobile(css`
     font-size: 16px;
   `)};
+
+  ::placeholder {
+    color: ${p => p.theme.lightDark};
+  }
 `

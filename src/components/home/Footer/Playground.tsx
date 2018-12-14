@@ -6,6 +6,7 @@ import Run from '../../vectors/Run'
 import Arrow from './Arrow'
 import { Code } from '../../shared/Code'
 import { fetchGraphQL } from '../../../api'
+import { CodeWithoutHighlight } from '../../shared/Code/Code'
 
 type Props = {}
 type State = {
@@ -63,6 +64,7 @@ export class Playground extends React.Component<Props, State> {
   }
 
   exampleChanged = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    this.setState({ isResultStale: true })
     const next = queriesList.find(q => q.title === e.target.value)
     if (next) {
       this.setState({
@@ -80,7 +82,7 @@ export class Playground extends React.Component<Props, State> {
     fetchGraphQL({ query: this.state.selectedQuery.query })
       .then(result => {
         this.setState({ result: result ? JSON.stringify(result, null, 2) : '' })
-        this.setState({ loading: false })
+        this.setState({ loading: false, isResultStale: false })
       })
       .catch(err => {
         console.log(err)
@@ -132,9 +134,19 @@ export class Playground extends React.Component<Props, State> {
         <ResultWrapper>
           <Title>Result</Title>
 
-          <Code background={false} language="json">
-            {this.state.result}
-          </Code>
+          {this.state.isResultStale ? (
+            <CodeWithoutHighlight
+              background={false}
+              language="json"
+              textColor="rgba(255,255,255,0.5)"
+            >
+              {this.state.result}
+            </CodeWithoutHighlight>
+          ) : (
+            <Code background={false} language="json" noHighlight={true}>
+              {this.state.result}
+            </Code>
+          )}
         </ResultWrapper>
       </Wrapper>
     )

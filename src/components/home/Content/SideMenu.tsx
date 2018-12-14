@@ -22,7 +22,7 @@ export const SideMenu = ({ heading, primaryColor, items }: Props) => {
   return (
     <Wrapper>
       <Title>{heading}</Title>
-      <div>
+      <ItemsWrapper>
         {items &&
           items.map((e, i) => (
             <Item
@@ -39,7 +39,7 @@ export const SideMenu = ({ heading, primaryColor, items }: Props) => {
               {e.text}
             </Item>
           ))}
-      </div>
+      </ItemsWrapper>
     </Wrapper>
   )
 }
@@ -92,4 +92,9 @@ const IconWrapper = styled.div`
   margin-right: 15px;
   margin-top: 1px;
   margin-bottom: -1px;
+`
+
+const ItemsWrapper = styled.div`
+  overflow: auto;
+  max-height: 900px;
 `

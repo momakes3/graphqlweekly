@@ -95,6 +95,6 @@ const IconWrapper = styled.div`
 `
 
 const ItemsWrapper = styled.div`
-  overflow: auto;
+  /* overflow: auto; */
   max-height: 900px;
 `

@@ -37,6 +37,7 @@ export default (props: Props) => {
             firstIssueNumber={props.pageContext.firstIssueNumber}
           />
           <Sidebar
+            currentIssueNumber={props.pageContext.issue.number}
             topicsTitles={props.pageContext.topicsTitles}
             allIssues={props.pageContext.allIssues}
           />

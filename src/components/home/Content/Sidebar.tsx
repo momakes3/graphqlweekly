@@ -13,6 +13,7 @@ import { IssueType } from '../../../types'
 import { getTopicUrlFriendly } from '../../../api'
 
 type Props = {
+  currentIssueNumber: number
   topicsTitles: string[]
   allIssues: IssueType[]
 }
@@ -76,7 +77,9 @@ export class Sidebar extends React.Component<Props, State> {
                 return {
                   to: `${url}#content`,
                   text: `Issue ${issue.number}`,
-                  selected: isCurrentUrl(url),
+                  selected:
+                    issue.number === props.currentIssueNumber ||
+                    isCurrentUrl(url),
                 }
               }),
 
